@@ -15,6 +15,7 @@ plength = 10
 # 存放一组Task的所有stream
 slist = []
 # stream 元组 [path,u,Fk,Tk,Dk]
+# add 
 
 # Fk【1-20】 u【0.1-0.5】 => TU 【0.1-0.5】*Fn
 
