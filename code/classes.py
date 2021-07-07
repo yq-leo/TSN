@@ -244,8 +244,8 @@ if __name__ == "__main__":
     sys.GenConfilctDict()
     sys.UpdateStreamPara(total_U = 1.0)
     #sys.PrintStreamInfo(isActZone = False)
-    sys.RunCoreAlg()
-    sys.IsFeasible()
+    #sys.RunCoreAlg()
+    #sys.IsFeasible()
     end_time = time.perf_counter()
     print('Time Consumed: %.4fs' % (end_time - start_time))
     
