@@ -127,7 +127,7 @@ class System:
             s.GenPath()
             self.streams.append(s)
     
-    def GenConfilctDict(self):
+    def GenConflictDict(self):
         self.cft_dict = defaultdict(list)
         for index, stream in enumerate(self.streams):
             for idx in range(len(stream.path) - 1):
@@ -217,22 +217,26 @@ class System:
                 stream.act_zone[link] = Xk
         
     
-    def IsFeasible(self):
-        print('---------------Simulation Results---------------')
+    def IsFeasible(self, is_print = False):
+        if is_print:
+            print('---------------Simulation Results---------------')
         num_success = 0
         for idx, stream in enumerate(self.streams):
             total_length = sum(stream.act_zone.values())
             isF = total_length < stream.Dk
             if isF:
                 num_success += 1
-            print('S%d' % idx + (' ' * (3 - len(str(idx))))
-                  + 'Active Interval: %d' % total_length 
-                  + (' ' * (7 - len(str(total_length))))
-                  + 'Deadline: %d' % stream.Dk
-                  + (' ' * (7 - len(str(stream.Dk))))
-                  + str(isF))    
-        print('Success Rate: %.2f' % (num_success / self.num_stream))
-        print('------------------------------------------------')
+            if is_print:
+                print('S%d' % idx + (' ' * (3 - len(str(idx))))
+                      + 'Active Interval: %d' % total_length 
+                      + (' ' * (7 - len(str(total_length))))
+                      + 'Deadline: %d' % stream.Dk
+                      + (' ' * (7 - len(str(stream.Dk))))
+                      + str(isF))
+        self.suc_rate = num_success / self.num_stream
+        if is_print:
+            print('Success Rate: %.2f' % self.suc_rate)
+            print('------------------------------------------------')
             
             
 if __name__ == "__main__":
